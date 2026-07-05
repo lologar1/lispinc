@@ -11,7 +11,7 @@ USFLIB2_OBJ_DIR := $(USFLIB2_DIR)/obj
 CC := gcc
 CFLAGS := -Wall -Wextra -Wunused-macros -Wcast-align=strict -Wduplicated-branches -Wduplicated-cond \
 		  -Wformat-signedness -Wjump-misses-init -Wlogical-op -Wsign-conversion -Wcast-qual \
-		  -std=gnu23 -O0 -g
+		  -std=gnu23 -O3
 INCLUDES := -I$(INC_DIR) -I$(USFLIB2_INC_DIR)
 LINKS := -lc -lm -ledit
 

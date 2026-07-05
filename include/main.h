@@ -3,7 +3,6 @@
 
 /* LISPINC standard program-wide conventions and includes */
 #include <stddef.h>
-#include <setjmp.h>
 
 #include "usfstd.h"
 #include "usfaesc.h"

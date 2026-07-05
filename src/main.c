@@ -93,7 +93,7 @@ c_int main(void) {
 	/* program end */
 	printf("\n"AESC_COLOR_SET_BOLD"Program end."AESC_RESET_ALL"\n");
 	env_freeenv(genv_);
-	mpc_cleanup(6, Number, Symbol, String, Comment, Sexpr, Qexpr, Gexpr, LParser_);
+	mpc_cleanup(8, Number, Symbol, String, Comment, Sexpr, Qexpr, Gexpr, LParser_);
 	clear_history(); /* free editline memory */
 
 	return 0;

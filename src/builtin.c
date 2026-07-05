@@ -90,7 +90,7 @@ void builtin_if(Lval *restrict args, Lval *restrict result, Env *env) {
 			lisp_lttostr(ARG(0)->type));
 	EXPTEST(ARG(1)->type != LTYPE_QEXPR, ARG(1), "function \"if\" second argument is %s, not Q-expression",
 			lisp_lttostr(ARG(1)->type));
-	EXPTEST(ARG(2)->type != LTYPE_QEXPR, ARG(2), "function \"if\" second argument is %s, not Q-expression",
+	EXPTEST(ARG(2)->type != LTYPE_QEXPR, ARG(2), "function \"if\" third argument is %s, not Q-expression",
 			lisp_lttostr(ARG(2)->type));
 
 	Lval **arg = (Lval **) (ARG(0)->num ? &args->arr->array[1] : &args->arr->array[2]);
@@ -256,6 +256,7 @@ void builtin_assign(Lval *restrict args, Lval *restrict result, Env *env) {
 	}
 
 	/* argument check */
+	ARGTYPETEST(==, LTYPE_ERROR, ""); /* avoid storing errors */
 	EXPTEST(symbols->arr->size != args->arr->size - 1, symbols, "assignment number of arguments "
 			"mismatch (%"PRIu64", whilst expecting %"PRIu64")", args->arr->size, symbols->arr->size + 1);
 
@@ -271,6 +272,7 @@ void builtin_lambda(Lval *restrict args, Lval *restrict result, Env *env) {
 
 	/* parameters check */
 	(void) env; Lval *params = ARG(0), *body = ARG(1);
+	ARGCOUNTTEST(!=, 2, "lambda");
 	EXPTEST(params->type != LTYPE_QEXPR, params, "function \"lambda\" argument 0 is %s, not Q-expression",
 			lisp_lttostr(params->type));
 	for (u64 i = 0; i < params->arr->size; i++) {

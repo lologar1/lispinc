@@ -68,5 +68,5 @@ void env_printenv(Env *env) {
 		printf("%s:", (char *) iter.entry->key.p);
 		lisp_printlval((Lval *) iter.entry->value.p);
 		fputc(' ', stdout);
-	} fputc('\b', stdout); /* remove last space */
+	} if (env->map->size) fputc('\b', stdout); /* remove last space */
 }
