@@ -1,0 +1,13 @@
+# Ignore Vim swap files
+*.swp
+
+# Ignore the soft linked library
+usflib2/
+
+# Ignore object files directory
+obj/
+
+# Ignore other temp files
+*~
+sync.sh
+lisp
